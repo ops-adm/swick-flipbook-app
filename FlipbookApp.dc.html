@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="image-slot.js"></script>
+  <style>
+    *{box-sizing:border-box;}
+    a{color:#e3bd6f;}
+    a:hover{color:#f0cf8e;}
+    @keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(201,162,74,0.55);}70%{box-shadow:0 0 0 14px rgba(201,162,74,0);}100%{box-shadow:0 0 0 0 rgba(201,162,74,0);}}
+    @keyframes bounceChevron{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+    @keyframes typingDot{0%,80%,100%{opacity:0.25;}40%{opacity:1;}}
+  </style>
+</helmet>
+<div style="position:relative;width:100%;height:100%;background:#0b0b0d;overflow:hidden;font-family:'Poppins',sans-serif;color:#f4ecd8;user-select:none;">
+
+  <img src="uploads/Swick%20logo%20transparent%203d.png" alt="" style="position:absolute;top:50%;left:50%;width:520px;transform:translate(-50%,-50%);mix-blend-mode:screen;opacity:0.05;pointer-events:none;z-index:0;-webkit-mask-image:radial-gradient(circle, #000 30%, transparent 70%);mask-image:radial-gradient(circle, #000 30%, transparent 70%);" />
+
+  <div ref="{{ stageRef }}" style="position:absolute;left:0;right:0;top:0;bottom:86px;perspective:2400px;z-index:1;" onPointerDown="{{ handleDown }}" onPointerMove="{{ handleMove }}" onPointerUp="{{ handleUp }}" onPointerCancel="{{ handleUp }}">
+
+    <div style="{{ page4Style }}">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 20%,#17151b 0%,#0b0b0d 70%);overflow-y:auto;padding:58px 24px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;">
+        <img src="uploads/Swick%20logo%20transparent%203d.png" alt="" style="width:190px;mix-blend-mode:screen;opacity:0.5;pointer-events:none;margin-bottom:6px;-webkit-mask-image:radial-gradient(circle, #000 38%, transparent 75%);mask-image:radial-gradient(circle, #000 38%, transparent 75%);" />
+        <h2 style="font-family:'Playfair Display',serif;font-weight:700;font-size:24px;color:#f7f1e3;margin:10px 0 0;">Ready to begin your next chapter?</h2>
+        <p style="font-size:13.5px;color:rgba(244,236,216,0.65);max-width:260px;margin-top:12px;line-height:1.65;">Reach out and a member of the team will help you get started — no pressure, just guidance.</p>
+        <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px;width:100%;max-width:260px;">
+          <a data-interactive="true" href="https://deniseswick.com" target="_blank" style="padding:13px;border-radius:999px;background:linear-gradient(145deg,#e3bd6f,#a8792f);color:#1a1408;font-size:13px;font-weight:600;text-decoration:none;text-align:center;">Visit DeniseSwick.com</a>
+          <a data-interactive="true" href="https://downsizeallies.com" target="_blank" style="padding:13px;border-radius:999px;border:1px solid rgba(244,236,216,0.3);color:#f4ecd8;font-size:13px;font-weight:600;text-decoration:none;text-align:center;">Visit DownsizeAllies.com</a>
+        </div>
+        <div style="margin-top:22px;font-size:12px;color:rgba(244,236,216,0.55);line-height:1.6;">Service@DeniseSwick.com<br/>7007 Corporate Way, Dayton, Ohio 45459</div>
+        <div style="display:flex;gap:10px;margin-top:16px;">
+          <sc-for list="{{ socials }}" as="s" hint-placeholder-count="4">
+            <a data-interactive="true" href="{{ s.href }}" target="_blank" style="width:32px;height:32px;border-radius:50%;border:1px solid rgba(201,162,74,0.4);display:flex;align-items:center;justify-content:center;color:#e3bd6f;font-size:10px;text-decoration:none;">{{ s.initials }}</a>
+          </sc-for>
+        </div>
+        <div style="margin-top:22px;font-size:10px;letter-spacing:2px;color:rgba(244,236,216,0.35);text-transform:uppercase;">The Swick Real Estate Group · Downsize Allies</div>
+      </div>
+    </div>
+
+    <div style="{{ page3Style }}">
+      <div style="position:absolute;inset:0;background:#101014;overflow-y:auto;padding:58px 24px 40px;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:2.5px;color:#c9a24a;text-transform:uppercase;">Your Downsize Ally</div>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:700;font-size:25px;line-height:1.25;margin:14px 0 0;color:#f7f1e3;">A dedicated partner for every step.</h2>
+        <p style="font-size:14px;line-height:1.7;color:rgba(244,236,216,0.82);margin-top:16px;">Your Downsize Ally partners with you from day one — understanding your needs, building a roadmap for success, and coordinating every step of the journey alongside a trusted network of local professionals.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px;">
+          <sc-for list="{{ network }}" as="n" hint-placeholder-count="8">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(244,236,216,0.08);border-radius:12px;">
+              <div style="{{ n.badgeStyle }}">{{ n.initials }}</div>
+              <div style="font-size:12px;color:rgba(244,236,216,0.85);line-height:1.3;">{{ n.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="{{ page2Style }}">
+      <div style="position:absolute;inset:0;background:#101014;overflow-y:auto;padding:58px 24px 40px;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:2.5px;color:#c9a24a;text-transform:uppercase;">Our Mission</div>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:700;font-size:25px;line-height:1.25;margin:14px 0 0;color:#f7f1e3;">We handle the house — and everything else.</h2>
+        <p style="font-size:14px;line-height:1.7;color:rgba(244,236,216,0.82);margin-top:16px;">With more than three decades of downsizing experience, we're committed to making the process easy for homeowners and their families — guiding clients through the complexities of downsizing with expert support and a comprehensive roadmap.</p>
+        <div style="margin-top:22px;padding:16px 18px;background:rgba(201,162,74,0.06);border-left:2px solid #c9a24a;border-radius:0 12px 12px 0;">
+          <div style="font-size:10.5px;letter-spacing:2px;color:#c9a24a;text-transform:uppercase;">Our Vision</div>
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:#f4ecd8;margin:8px 0 0;line-height:1.5;">To be America's trusted partner in home downsizing.</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;">
+          <span style="padding:7px 13px;border-radius:999px;background:rgba(201,162,74,0.12);color:#e3bd6f;font-size:12px;">People Over Profit</span>
+          <span style="padding:7px 13px;border-radius:999px;background:rgba(43,91,215,0.14);color:#8fabf1;font-size:12px;">Clear Communication</span>
+          <span style="padding:7px 13px;border-radius:999px;background:rgba(201,47,52,0.14);color:#ea9194;font-size:12px;">Collaborative Partnerships</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="{{ page1Style }}">
+      <div style="position:absolute;inset:0;background:#101014;overflow-y:auto;padding:58px 24px 40px;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:2.5px;color:#c9a24a;text-transform:uppercase;">Meet Denise</div>
+        <div style="display:flex;gap:16px;align-items:center;margin-top:16px;">
+          <image-slot id="denise-photo" data-interactive="true" shape="circle" placeholder="Denise's photo" style="width:88px;height:88px;flex-shrink:0;"></image-slot>
+          <div>
+            <h2 style="font-family:'Playfair Display',serif;font-weight:700;font-size:26px;margin:0;color:#f7f1e3;">Denise Swick</h2>
+            <div style="font-size:12px;color:rgba(244,236,216,0.55);margin-top:4px;">Owner, The Swick Real Estate Group</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;">
+          <span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(201,162,74,0.5);color:#e3bd6f;font-size:11.5px;">Investor</span>
+          <span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(43,91,215,0.5);color:#7fa0ee;font-size:11.5px;">Best-Selling Author</span>
+          <span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(201,47,52,0.5);color:#e77e81;font-size:11.5px;">Real Estate Broker</span>
+        </div>
+        <p style="font-size:14px;line-height:1.7;color:rgba(244,236,216,0.82);margin-top:20px;">Over the past 35 years as a real estate broker and entrepreneur, Denise has been privileged to help thousands of Dayton and Cincinnati-area homeowners achieve their real estate goals.</p>
+        <div style="border-left:2px solid #c9a24a;padding-left:14px;margin-top:18px;">
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:#e3bd6f;line-height:1.6;margin:0;">"Honesty and integrity: no matter the market, the clients, or the situation, these two values always lead to the best outcome for all involved."</p>
+        </div>
+        <div data-interactive="true" style="display:flex;gap:14px;align-items:center;margin-top:24px;padding:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(244,236,216,0.1);border-radius:14px;">
+          <image-slot id="book-cover" data-interactive="true" shape="rounded" radius="6" placeholder="Book" style="width:52px;height:76px;flex-shrink:0;"></image-slot>
+          <div style="flex:1;">
+            <div style="font-family:'Playfair Display',serif;font-weight:600;font-size:14.5px;color:#f4ecd8;">Cracking the Real Estate Code</div>
+            <div style="font-size:11px;color:rgba(244,236,216,0.5);margin-top:3px;">National Best-Selling Book</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="{{ page0Style }}">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 28%,#18151d 0%,#0b0b0d 72%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 34px;overflow:hidden;">
+        <img src="uploads/Swick%20logo%20transparent%203d.png" alt="" style="position:absolute;top:46%;left:50%;width:340px;transform:translate(-50%,-50%);mix-blend-mode:screen;opacity:0.22;pointer-events:none;-webkit-mask-image:radial-gradient(circle, #000 32%, transparent 68%);mask-image:radial-gradient(circle, #000 32%, transparent 68%);" />
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
+          <div style="font-size:11.5px;font-weight:600;letter-spacing:3px;color:#c9a24a;text-transform:uppercase;">The Swick Real Estate Group</div>
+          <div style="width:38px;height:2px;background:#c9a24a;margin:16px 0;"></div>
+          <h1 style="font-family:'Playfair Display',serif;font-weight:700;font-size:42px;line-height:1.1;margin:0;color:#f7f1e3;">We Handle<br/>The House.</h1>
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:21px;color:#e3bd6f;margin-top:12px;">...and everything else.</div>
+          <p style="font-size:13.5px;color:rgba(244,236,216,0.6);max-width:260px;margin-top:20px;line-height:1.65;">A guide to buying, selling, and downsizing — with heart, from Denise Swick and the Downsize Allies team.</p>
+        </div>
+        <div style="position:absolute;bottom:34px;display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <svg width="16" height="10" viewBox="0 0 16 10" style="animation:bounceChevron 1.8s ease-in-out infinite;"><path d="M1 1L8 8L15 1" stroke="#c9a24a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg>
+          <div style="font-size:10.5px;letter-spacing:2px;color:rgba(244,236,216,0.45);text-transform:uppercase;">Swipe to begin</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="position:absolute;left:0;right:0;bottom:0;height:86px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:linear-gradient(to top, rgba(11,11,13,0.96), rgba(11,11,13,0));z-index:400;">
+    <button data-interactive="true" onClick="{{ goPrev }}" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,236,216,0.25);background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:{{ prevOpacity }};">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M8 1L1.5 7.5L8 14" stroke="#f4ecd8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </button>
+    <div style="display:flex;gap:7px;">
+      <sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
+        <div style="{{ d.style }}"></div>
+      </sc-for>
+    </div>
+    <button data-interactive="true" onClick="{{ goNext }}" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,236,216,0.25);background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:{{ nextOpacity }};">
+      <svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M1 1L7.5 7.5L1 14" stroke="#f4ecd8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </button>
+  </div>
+
+  <button data-interactive="true" onClick="{{ toggleClaudia }}" style="position:absolute;right:16px;bottom:104px;width:60px;height:60px;border-radius:50%;background:linear-gradient(145deg,#e3bd6f,#a8792f);border:none;box-shadow:0 8px 20px rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:450;cursor:pointer;animation:pulseRing 2.6s ease-out infinite;">
+    <span style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:24px;color:#1a1408;">C</span>
+  </button>
+
+  <sc-if value="{{ claudiaOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-interactive="true" style="position:absolute;inset:0;z-index:600;">
+      <div onClick="{{ toggleClaudia }}" style="position:absolute;inset:0;background:rgba(0,0,0,0.55);"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:74%;background:#121115;border-top:1px solid rgba(201,162,74,0.4);border-radius:26px 26px 0 0;display:flex;flex-direction:column;box-shadow:0 -20px 50px rgba(0,0,0,0.5);">
+        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px 14px;border-bottom:1px solid rgba(244,236,216,0.08);">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(145deg,#e3bd6f,#a8792f);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:17px;color:#1a1408;">C</span>
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:'Playfair Display',serif;font-weight:600;font-size:17px;color:#f4ecd8;">Claudia</div>
+            <div style="font-size:11px;color:rgba(244,236,216,0.55);">Your Downsize Ally · Online</div>
+          </div>
+          <button onClick="{{ toggleClaudia }}" style="width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,0.06);border:none;color:#f4ecd8;font-size:15px;cursor:pointer;">×</button>
+        </div>
+        <div ref="{{ msgRef }}" style="flex:1;overflow-y:auto;padding:16px 18px;display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ messages }}" as="m" hint-placeholder-count="1">
+            <div style="{{ m.rowStyle }}">
+              <div style="{{ m.bubbleStyle }}">{{ m.text }}</div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+            <div style="align-self:flex-start;background:rgba(255,255,255,0.06);border:1px solid rgba(201,162,74,0.3);border-radius:14px;padding:10px 14px;display:flex;gap:4px;">
+              <span style="width:6px;height:6px;border-radius:50%;background:#c9a24a;display:inline-block;animation:typingDot 1.2s infinite;"></span>
+              <span style="width:6px;height:6px;border-radius:50%;background:#c9a24a;display:inline-block;animation:typingDot 1.2s infinite 0.2s;"></span>
+              <span style="width:6px;height:6px;border-radius:50%;background:#c9a24a;display:inline-block;animation:typingDot 1.2s infinite 0.4s;"></span>
+            </div>
+          </sc-if>
+        </div>
+        <div style="padding:12px 16px 20px;border-top:1px solid rgba(244,236,216,0.08);display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="4">
+            <button data-interactive="true" onClick="{{ c.onClick }}" style="padding:9px 14px;border-radius:999px;border:1px solid rgba(201,162,74,0.45);background:rgba(201,162,74,0.08);color:#e3bd6f;font-size:12.5px;font-family:'Poppins',sans-serif;cursor:pointer;">{{ c.q }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 390, &quot;height&quot;: 800}}">
+class Component extends DCLogic {
+  state = {
+    index: 0, dir: null, progress: 0, dragging: false, animating: false,
+    claudiaOpen: false, messages: [], typing: false,
+  };
+
+  QA = [
+    { q: 'What is Downsize Allies?', a: "We're the team Denise Swick founded to handle every part of downsizing — prepping and selling the home, coordinating movers, estate sales, and everything in between. Our promise: we handle the house, and everything else." },
+    { q: 'Tell me about Denise', a: "Denise Swick has spent 35+ years as a real estate broker and entrepreneur, helping thousands of Dayton and Cincinnati-area homeowners. She's also a national best-selling author of 'Cracking the Real Estate Code.' After suddenly losing her mother and becoming caregiver to three elderly relatives, she turned that experience into Downsize Allies." },
+    { q: 'How does the process work?', a: 'You get a dedicated Downsize Ally — a personal coordinator who partners with you from day one, builds your roadmap, and manages every step: real estate, movers, estate sales, attorneys, and more.' },
+    { q: 'What areas do you serve?', a: 'We proudly serve homeowners across the greater Dayton and Cincinnati, Ohio area.' },
+    { q: 'How do I get started?', a: 'Reach out at Service@DeniseSwick.com and a member of the team will follow up to talk through your situation — no pressure, just guidance.' },
+  ];
+
+  setStageRef = (el) => { this.stageEl = el; if (el) this._stageWidth = el.offsetWidth; };
+  setMsgRef = (el) => { this.msgEl = el; };
+
+  componentDidMount() {
+    this._stageWidth = this.stageEl ? this.stageEl.offsetWidth : 375;
+  }
+
+  componentDidUpdate() {
+    if (this.msgEl) this.msgEl.scrollTop = this.msgEl.scrollHeight;
+  }
+
+  isInteractive(e) {
+    return !!(e.target.closest && e.target.closest('button, a, image-slot, [data-interactive]'));
+  }
+
+  handleDown = (e) => {
+    if (this.isInteractive(e)) return;
+    if (this.state.animating) return;
+    this._startX = e.clientX;
+    this._dragDir = null;
+  };
+
+  handleMove = (e) => {
+    if (this._startX == null) return;
+    const dx = e.clientX - this._startX;
+    if (!this._dragDir) {
+      if (Math.abs(dx) < 6) return;
+      const dir = dx < 0 ? 'next' : 'prev';
+      if (dir === 'next' && this.state.index >= 4) { this._startX = null; return; }
+      if (dir === 'prev' && this.state.index <= 0) { this._startX = null; return; }
+      this._dragDir = dir;
+      this.setState({ dragging: true, dir, progress: 0 });
+      return;
+    }
+    const width = this._stageWidth || 375;
+    const p = Math.min(1, Math.max(0, Math.abs(dx) / width));
+    this.setState({ progress: p });
+  };
+
+  handleUp = () => {
+    this._startX = null;
+    if (!this._dragDir) return;
+    const dir = this._dragDir;
+    this._dragDir = null;
+    const commit = this.state.progress > 0.28;
+    this.setState({ dragging: false, animating: true, progress: commit ? 1 : 0 });
+    setTimeout(() => {
+      this.setState((s) => ({
+        index: commit ? (dir === 'next' ? s.index + 1 : s.index - 1) : s.index,
+        dir: null, progress: 0, animating: false,
+      }));
+    }, 580);
+  };
+
+  triggerFlip = (dir) => {
+    if (this.state.animating) return;
+    if (dir === 'next' && this.state.index >= 4) return;
+    if (dir === 'prev' && this.state.index <= 0) return;
+    this.setState({ dir, progress: 1, animating: true, dragging: false });
+    setTimeout(() => {
+      this.setState((s) => ({
+        index: dir === 'next' ? s.index + 1 : s.index - 1,
+        dir: null, progress: 0, animating: false,
+      }));
+    }, 580);
+  };
+
+  goNext = () => this.triggerFlip('next');
+  goPrev = () => this.triggerFlip('prev');
+
+  toggleClaudia = () => {
+    this.setState((s) => {
+      const opening = !s.claudiaOpen;
+      const messages = (opening && s.messages.length === 0)
+        ? [{ from: 'claudia', text: "Hi, I'm Claudia — your personal Downsize Ally. I'm here to help with anything about The Swick Real Estate Group or Downsize Allies. What would you like to know?" }]
+        : s.messages;
+      return { claudiaOpen: opening, messages };
+    });
+  };
+
+  handleChip = (qa) => {
+    this.setState((s) => ({ messages: [...s.messages, { from: 'user', text: qa.q }], typing: true }));
+    setTimeout(() => {
+      this.setState((s) => ({ messages: [...s.messages, { from: 'claudia', text: qa.a }], typing: false }));
+    }, 900);
+  };
+
+  pageStyle(i) {
+    const { index, dir, progress, dragging } = this.state;
+    let rotate = i < index ? -180 : 0;
+    let z = 5 - Math.abs(i - index);
+    if (dir === 'next' && i === index) { rotate = -progress * 180; z = 110; }
+    else if (dir === 'prev' && i === index - 1) { rotate = -(180 - progress * 180); z = 110; }
+    const transition = dragging ? 'none' : 'transform 0.6s cubic-bezier(.22,.61,.36,1)';
+    const shadow = (z === 110) ? '10px 0 34px rgba(0,0,0,0.5)' : 'none';
+    return `position:absolute;inset:0;transform-origin:left center;backface-visibility:hidden;transform:rotateY(${rotate}deg);z-index:${z};transition:${transition};box-shadow:${shadow};`;
+  }
+
+  renderVals() {
+    const { index, claudiaOpen, messages, typing } = this.state;
+    const dots = Array.from({ length: 5 }, (_, i) => ({
+      style: `width:${i === index ? 18 : 6}px;height:6px;border-radius:3px;background:${i === index ? '#c9a24a' : 'rgba(244,236,216,0.25)'};transition:width 0.3s;`,
+    }));
+    const network = [
+      ['FA', 'Financial Advisors'], ['AT', 'Attorneys'], ['RE', 'Real Estate Specialists'], ['AU', 'Auctioneers'],
+      ['ES', 'Estate Sale Specialists'], ['CO', 'Clean Out Specialists'], ['CH', 'Contractors & Handymen'], ['MV', 'Movers'],
+    ].map(([initials, label], i) => {
+      const colors = ['#c9a24a', '#2b5bd7', '#c92f34'];
+      const bg = colors[i % 3];
+      return { initials, label, badgeStyle: `width:34px;height:34px;border-radius:50%;background:${bg};color:#0b0b0d;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;` };
+    });
+    const socials = [
+      { initials: 'FB', href: 'https://www.facebook.com/realdeniseswick/' },
+      { initials: 'IG', href: 'https://www.instagram.com/realdeniseswick' },
+      { initials: 'TT', href: 'https://www.tiktok.com/@realdeniseswick' },
+      { initials: 'IN', href: 'https://www.linkedin.com/in/realdeniseswick/' },
+    ];
+    const chips = this.QA.map((qa) => ({ q: qa.q, onClick: () => this.handleChip(qa) }));
+    const msgs = messages.map((m) => ({
+      text: m.text,
+      rowStyle: `display:flex;justify-content:${m.from === 'user' ? 'flex-end' : 'flex-start'};`,
+      bubbleStyle: m.from === 'user'
+        ? 'max-width:78%;background:#2b5bd7;color:#fff;padding:10px 14px;border-radius:14px 14px 3px 14px;font-size:13px;line-height:1.5;'
+        : 'max-width:82%;background:rgba(255,255,255,0.06);border:1px solid rgba(201,162,74,0.3);color:#f4ecd8;padding:10px 14px;border-radius:14px 14px 14px 3px;font-size:13px;line-height:1.5;',
+    }));
+    return {
+      page0Style: this.pageStyle(0), page1Style: this.pageStyle(1), page2Style: this.pageStyle(2),
+      page3Style: this.pageStyle(3), page4Style: this.pageStyle(4),
+      dots, network, socials, chips, messages: msgs, typing, claudiaOpen,
+      prevOpacity: index === 0 ? 0.3 : 1,
+      nextOpacity: index === 4 ? 0.3 : 1,
+      handleDown: this.handleDown, handleMove: this.handleMove, handleUp: this.handleUp,
+      goPrev: this.goPrev, goNext: this.goNext, toggleClaudia: this.toggleClaudia,
+      stageRef: this.setStageRef, msgRef: this.setMsgRef,
+    };
+  }
+}
+</script>
+</body>
+</html>
