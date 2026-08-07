@@ -1,3 +1,3 @@
 # Swick Real Estate-flipbook-app www.swick-flipbook-app.dc.html
 Swick-flipbook-app (iPhone &amp; Android)
-www.swick-flipbook-app.dc.html
+https://github.com/ops-adm/swick-flipbook-app/swick-flipbook-app.dc.html
